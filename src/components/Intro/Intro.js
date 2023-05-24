@@ -1,28 +1,49 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-// const API_IMG = "https://image.tmdb.org/t/p/w500";
-// https://api.themoviedb.org/3/movie/157336?api_key=bca6a436b3a5e8df17b445bb2150fdaf
-// https://api.themoviedb.org/3/movie/157336/videos?api_key=bca6a436b3a5e8df17b445bb2150fdaf
-// Promise 방식
-// https://goddino.tistory.com/158
-// https://korinkorin.tistory.com/72
-const Movies = ({ title, poster_path }) => {
-  const [movies, setMovies] = useState(false);
+const API_URL_BASE = process.env.REACT_APP_API_URL_BASE;
+const API_KEY = process.env.REACT_APP_API_KEY;
+const BASE_LANG = process.env.REACT_APP_BASE_LANG;
+const BASE_REGION = process.env.REACT_APP_BASE_REGION;
+const API_IMG = "https://image.tmdb.org/t/p/w500";
+
+function Movies() {
+  const [movies, setMovies] = useState([]);
+
   useEffect(() => {
     axios
       .get(
-        "https://api.themoviedb.org/3/movie/now_playing?api_key=bca6a436b3a5e8df17b445bb2150fdaf&language=en-US&page=1"
+        `${API_URL_BASE}now_playing?api_key=${API_KEY}&language=${BASE_LANG}-${BASE_REGION}`
       )
-      .then((res) => setMovies(res.data));
+      .then((res) => {
+        const fetchedMovies = res.data.results;
+        setMovies(fetchedMovies);
+      })
+      .catch((error) => {
+        console.error("Error fetching movies:", error);
+      });
   }, []);
-  console.log(movies, "movies");
+
+  // Randomly select one movie from the movies array
+  const randomMovie = movies[Math.floor(Math.random() * movies.length)];
 
   return (
-    <div className="intro-container">
-      <h3>{movies}</h3>
+    <div>
+      {movies.length > 0 ? (
+        <div>
+          <h2>Random Movie:</h2>
+          <h3>Title: {randomMovie.title}</h3>
+          <p>ID: {randomMovie.id}</p>
+          <img
+            src={`${API_IMG}${randomMovie.poster_path}`}
+            alt={randomMovie.title}
+          />
+        </div>
+      ) : (
+        <p>Loading movies...</p>
+      )}
     </div>
   );
-};
+}
 
 export default Movies;
