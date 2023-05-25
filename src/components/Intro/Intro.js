@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Wrapper } from "../../style/variables";
+import * as S from "./Intro.style";
 
 const API_URL_BASE = process.env.REACT_APP_API_URL_BASE;
 const API_KEY = process.env.REACT_APP_API_KEY;
@@ -9,6 +11,7 @@ const API_IMG = "https://image.tmdb.org/t/p/w500";
 
 function Movies() {
   const [movies, setMovies] = useState([]);
+  const [backgroundImageUrl, setBackgroundImageUrl] = useState("");
 
   useEffect(() => {
     axios
@@ -18,31 +21,46 @@ function Movies() {
       .then((res) => {
         const fetchedMovies = res.data.results;
         setMovies(fetchedMovies);
+        console.log("fetchedMovies", fetchedMovies);
+
+        // Randomly select one movie from the movies array
+        const randomMovie =
+          fetchedMovies[Math.floor(Math.random() * fetchedMovies.length)];
+        setBackgroundImageUrl(`${API_IMG}${randomMovie.poster_path}`);
       })
       .catch((error) => {
         console.error("Error fetching movies:", error);
       });
   }, []);
 
-  // Randomly select one movie from the movies array
-  const randomMovie = movies[Math.floor(Math.random() * movies.length)];
-
   return (
-    <div>
-      {movies.length > 0 ? (
-        <div>
-          <h2>Random Movie:</h2>
-          <h3>Title: {randomMovie.title}</h3>
-          <p>ID: {randomMovie.id}</p>
-          <img
-            src={`${API_IMG}${randomMovie.poster_path}`}
-            alt={randomMovie.title}
-          />
-        </div>
-      ) : (
-        <p>Loading movies...</p>
-      )}
-    </div>
+    <>
+      <S.HomeIntro
+        style={{
+          backgroundImage: `url(${backgroundImageUrl})`,
+          // backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center center",
+        }}
+      >
+        <Wrapper>
+          <S.Container>
+            {movies.length > 0 ? (
+              <div>
+                <S.Title>Today Movie</S.Title>
+                <S.Description>{movies[0].tagline}</S.Description>
+                <S.Name>{movies[0].original_title}</S.Name>
+                {/* <S.MoreButton>
+                  <Link to={`/detail/${movies[0].id}`}>More</Link>
+                </S.MoreButton> */}
+              </div>
+            ) : (
+              <p>Loading movies...</p>
+            )}
+          </S.Container>
+        </Wrapper>
+      </S.HomeIntro>
+    </>
   );
 }
 

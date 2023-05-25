@@ -9,10 +9,10 @@ function HomeIntro() {
     <>
       <Layout>
         <Header />
-        <S.Main>
-          <Intro />
-        </S.Main>
-        {/* <S.Background backdropPath={movies.backdropPath} /> */}
+
+        <Intro />
+
+        {/* <S.Background backdropPath={randomMovie.backdropPath} /> */}
       </Layout>
     </>
   );

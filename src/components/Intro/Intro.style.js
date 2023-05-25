@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { homeIntroZindex, device } from "../../style/variables";
 
 const HomeIntro = styled.section`
+  width: 100%;
+  height: 100%;
   position: relative;
   z-index: ${homeIntroZindex};
 `;
