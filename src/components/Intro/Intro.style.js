@@ -6,6 +6,8 @@ const HomeIntro = styled.section`
   height: 100%;
   position: relative;
   z-index: ${homeIntroZindex};
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 const Container = styled.div`

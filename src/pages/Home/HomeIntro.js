@@ -2,21 +2,26 @@ import React, { useEffect, useState } from "react";
 import Header from "../../components/header/header";
 import Intro from "../../components/Intro/Intro";
 import { Layout } from "../../style/variables";
+import { useDispatch, useSelector } from "react-redux";
 import * as S from "./HomeIntro.style";
 
-function HomeIntro() {
+//Reducer
+import { REQUEST, SUCCESS, FAILURE } from "../../store/modules/fetch";
+import { introSlice } from "../../store/modules/fetch";
+
+const HomeIntro = () => {
+  // const { result } = useSelector((state) => state.intro);
+  // console.log(result, "result");
   return (
     <>
       <Layout>
         <Header />
-
         <Intro />
-
-        {/* <S.Background backdropPath={randomMovie.backdropPath} /> */}
+        {/* <S.Background backdrop_path={result.backdrop_path} /> */}
       </Layout>
     </>
   );
-}
+};
 
 export default HomeIntro;
 

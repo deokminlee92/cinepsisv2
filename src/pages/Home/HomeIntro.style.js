@@ -4,13 +4,6 @@ const Main = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  background: ${({ backdropPath }) => `url(${backdropPath}) center no-repeat`};
-  background-size: cover;
-  height: 100vh;
 `;
 
 const Background = styled.div`
