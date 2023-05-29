@@ -1,10 +1,18 @@
-// TopRatedMovies 컴포넌트
+// IntroMovies 컴포넌트
 import { useEffect, useState } from "react";
-import { useGetTopRatedMoviesQuery } from "../../store/modules/fetch";
+import { useGetRandomMovieQuery } from "../../store/modules/fetch";
+import { Link } from "react-router-dom";
+import * as S from "./Intro.style";
+import { Wrapper } from "../../style/variables";
+const API_IMG = "https://image.tmdb.org/t/p/w500";
 
-const TopRatedMovies = () => {
+const IntroMovies = () => {
   const API_KEY = process.env.REACT_APP_API_KEY;
-  const { data, isLoading, isError } = useGetTopRatedMoviesQuery({
+  const {
+    data: movies,
+    isLoading,
+    isError,
+  } = useGetRandomMovieQuery({
     api_key: API_KEY,
     language: "en-EN",
   });
@@ -28,23 +36,33 @@ const TopRatedMovies = () => {
     return <div>Error...</div>;
   }
 
+  const randomIndex = Math.floor(Math.random() * movies.results.length);
+  const randomMovie = movies.results[randomIndex];
+
   return (
-    <div>
-      <h1>Top Rated Movies</h1>
-      <ul>
-        {data.results.map((movie) => (
-          <li key={movie.id}>
-            <div>{movie.title}</div>
-            <img
-              src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-              alt={movie.title}
-            />
-            <div>{movie.tagline}</div>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <S.HomeIntro>
+        <Wrapper>
+          <S.Container>
+            <S.Title>Today Movie</S.Title>
+            {randomMovie && (
+              <div>
+                <S.Name>{randomMovie.title}</S.Name>
+                <S.Description>{randomMovie.tagline}</S.Description>
+                <img
+                  src={`${API_IMG}${randomMovie.poster_path}`}
+                  alt={randomMovie.title}
+                />
+              </div>
+            )}
+            <S.MoreButton>
+              <Link to={`/detail/$randomMovie.id}`}>More</Link>
+            </S.MoreButton>
+          </S.Container>
+        </Wrapper>
+      </S.HomeIntro>
+    </>
   );
 };
 
-export default TopRatedMovies;
+export default IntroMovies;
