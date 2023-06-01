@@ -1,41 +1,40 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Header from "../../components/header/header";
-import Intro from "../../components/Intro/Intro";
+import IntroMovies from "../../components/Intro/Intro";
+import Loader from "../../components/Loader/Loader";
 import { Layout } from "../../style/variables";
-// import { useDispatch, useSelector } from "react-redux";
-// import * as S from "./HomeIntro.style";
+import { useGetRandomMovieQuery } from "../../store/modules/fetch";
+import * as S from "./HomeIntro.style";
 
-const HomeIntro = () => {
+const API_IMG = "https://image.tmdb.org/t/p/original";
+
+const HomeIntro = ({ ran }) => {
+  const { data, isError, isLoading } = useGetRandomMovieQuery(ran);
+
+  console.log(data, isError, isLoading, "results");
+
+  if (isLoading) {
+    return <div>Loading</div>;
+  }
+  if (isError) {
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
+  }
+  const backdropUrl = `${API_IMG}${data.backdrop_path}`;
   return (
     <>
       <Layout>
         <Header />
-        <Intro />
-        {/* <S.Background backdrop_path={randomMovie.backdrop_path} /> */}
+        <S.Main>
+          <IntroMovies />
+        </S.Main>
+        <S.Background style={{ backgroundImage: `url(${backdropUrl})` }} />
       </Layout>
     </>
   );
 };
 
 export default HomeIntro;
-
-// ------------------- OG -------------------
-// import React, { useEffect, useState } from "react";
-// import Header from "../../components/header/header";
-// import Movies from "../../components/Intro/Intro";
-
-// // Home page 렌더링시에 아무 영화나 하나 렌더링시키기
-
-// const API_SEARCH =
-//   "https://api.themoviedb.org/3/search/movie?api_key=bca6a436b3a5e8df17b445bb2150fdaf&query";
-
-// function Home({}) {
-//   return (
-//     <>
-//       <Header />
-//       <Movies />
-//     </>
-//   );
-// }
-
-// export default Home;

@@ -6,6 +6,7 @@ import Search from "./pages/search/search";
 import Films from "./pages/films/films";
 import Favoris from "./pages/favoris/favoris";
 import About from "./pages/about/about";
+import GlobalStyle from "./style/global";
 
 function App() {
   return (

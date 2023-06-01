@@ -1,11 +1,11 @@
 import { createGlobalStyle } from "styled-components";
-import { normalize } from "styled-normalize";
+import normalize from "styled-normalize";
 
 const GlobalStyle = createGlobalStyle`
   ${normalize}
 
   body {
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     padding: 0;
     overflow: ${({ isOpen }) => (isOpen ? "hidden" : "visible")};
   }

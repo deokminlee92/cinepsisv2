@@ -11,7 +11,8 @@ const Background = styled.div`
   left: 0;
   top: 0;
   width: 100%;
-  background: ${({ backdropPath }) => `url(${backdropPath}) center no-repeat`};
+  background: ${({ backdrop_path }) =>
+    `url(${backdrop_path}) center no-repeat`};
   background-size: cover;
   height: 100vh;
 
