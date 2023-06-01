@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../../components/header/header";
+import Header from "../../components/Header/header";
 import IntroMovies from "../../components/Intro/Intro";
 import Loader from "../../components/Loader/Loader";
 import { Layout } from "../../style/variables";
