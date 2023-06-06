@@ -21,6 +21,11 @@ export const movieApi = createApi({
             params: { api_key, BASE_LANG },
           };
         },
+        transformResponse: (response) => {
+          const movies = response.results;
+          console.log(movies, "movies");
+          return Array.isArray(movies) ? movies : [];
+        },
       }),
       GetRandomMovie: builder.query({
         query: (ran) => {

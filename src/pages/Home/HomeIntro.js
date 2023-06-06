@@ -10,7 +10,6 @@ const API_IMG = "https://image.tmdb.org/t/p/original";
 
 const HomeIntro = ({ ran }) => {
   const { data, isError, isLoading } = useGetRandomMovieQuery(ran);
-
   console.log(data, isError, isLoading, "results");
 
   if (isLoading) {
@@ -24,6 +23,7 @@ const HomeIntro = ({ ran }) => {
     );
   }
   const backdropUrl = `${API_IMG}${data.backdrop_path}`;
+  console.log(backdropUrl, "backdropUrl");
   return (
     <>
       <Layout>

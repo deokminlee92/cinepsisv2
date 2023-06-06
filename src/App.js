@@ -3,10 +3,10 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import HomeIntro from "./pages/Home/HomeIntro";
 import Search from "./pages/search/search";
-import Films from "./pages/Films/Films";
 import Favoris from "./pages/favoris/favoris";
 import About from "./pages/about/about";
 import GlobalStyle from "./style/global";
+import Films from "./pages/films/films";
 
 function App() {
   return (
