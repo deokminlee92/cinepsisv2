@@ -18,6 +18,7 @@ const Header = styled.header`
   background-color: ${({ bgColor }) => bgColor};
   width: 100%;
   ${headerStyle};
+  border: 3px solid red;
 `;
 
 const Container = styled.div`
@@ -27,7 +28,7 @@ const Container = styled.div`
   justify-content: ${({ isOpen }) => (isOpen ? "flex-end" : "space-between")};
   align-items: center;
   color: ${({ color }) => color};
-
+  border: 3px solid green;
   @media ${device.Laptops} {
     width: ${headerWidthLaptop};
   }
@@ -59,6 +60,7 @@ const MenuContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 3px solid yellow;
 `;
 
 const SearchIcon = styled(IoIosSearch)`

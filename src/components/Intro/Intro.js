@@ -12,11 +12,9 @@ const IntroMovies = ({ ran }) => {
       <S.HomeIntro>
         <Wrapper>
           <S.Container>
-            <S.Title>Today Movie</S.Title>
-
+            {/* <S.Title>Today Movie</S.Title> */}
+            {/* <S.Description>{data.overview}</S.Description> */}
             <S.Name>{data.title}</S.Name>
-            <S.Description>{data.tagline}</S.Description>
-
             <S.MoreButton>
               <Link to={`/detail/$randomMovie.id}`}>More</Link>
             </S.MoreButton>
