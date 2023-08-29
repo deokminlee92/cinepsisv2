@@ -1,9 +1,10 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { footerZindex } from "../../style/variables";
 import { FaGithub } from "react-icons/fa";
 
 const Footer = styled.footer`
   padding: 1rem 0;
+  border: 3px solid red;
 `;
 
 const Container = styled.div`
@@ -19,7 +20,13 @@ const Copyright = styled.div`
   display: flex;
   align-items: center;
   font-size: 1rem;
-  color: white;
+  // color 프롭이 없이면 디폴트 화이트
+  color: ${(p) => p.color || "white"};
+  ${(p) =>
+    p.color &&
+    css`
+      color: black;
+    `}
   opacity: 0.7;
 `;
 

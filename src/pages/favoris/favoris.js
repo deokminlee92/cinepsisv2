@@ -1,13 +1,14 @@
 import React from "react";
 import Header from "../../components/Header/header";
+import Footer from "../../components/Footer/Footer";
 
-function Favoris() {
+const Favoris = () => {
   return (
-    <div>
-      Favoris
+    <>
       <Header />
-    </div>
+      <Footer color="white" />
+    </>
   );
-}
+};
 
 export default Favoris;
