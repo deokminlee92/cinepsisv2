@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import * as S from "./header.style";
 import { Wrapper } from "../../style/variables";
 
-function Header({ isSearching }) {
+function Header({ isSearching, color, primary }) {
   return (
     <>
-      <S.Header>
+      <S.Header color={color} primary={primary}>
         <Wrapper>
           <S.Container>
-            <S.LogoLinkContainer>
+            <S.LogoLinkContainer color={color}>
               <Link to="/">Movie</Link>
             </S.LogoLinkContainer>
             <S.MenuContainer>

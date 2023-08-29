@@ -17,7 +17,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   color: white;
-  font-size: 2.5rem;
+  font-size: 2rem;
   text-align: center;
   /* border: 3px solid black; */
   position: absolute;
@@ -33,10 +33,10 @@ const Container = styled.div`
 
 const contentMarginBottom = "1.5em";
 
-// const Title = styled.div`
-//   font-size: 1.2em;
-//   margin-bottom: ${contentMarginBottom};
-// `;
+const Title = styled.div`
+  font-size: 1.1em;
+  margin-bottom: ${contentMarginBottom};
+`;
 
 // const Description = styled.div`
 //   font-size: 0.8em;
@@ -47,18 +47,18 @@ const contentMarginBottom = "1.5em";
 // `;
 
 const Name = styled.div`
-  font-size: 1.3em;
+  font-size: 1.8em;
   margin-bottom: calc(${contentMarginBottom} + 1em);
   margin-bottom: 1em;
 `;
 
 const MoreButton = styled.button`
-  width: 200px;
+  width: 150px;
   padding: 0.5rem 0;
   border: 3px solid white;
   background-color: rgba(0, 0, 0, 0.3);
   color: white;
-  font-size: 1em;
+  font-size: 0.8em;
   font-weight: bold;
   transition: background-color 0.2s;
 
@@ -67,4 +67,4 @@ const MoreButton = styled.button`
   }
 `;
 
-export { HomeIntro, Container, Name, MoreButton };
+export { HomeIntro, Container, Title, Name, MoreButton };

@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../../components/Header/header";
 import IntroMovies from "../../components/Intro/Intro";
 import Loader from "../../components/Loader/Loader";
+import Footer from "../../components/Footer/Footer";
 import { Layout } from "../../style/variables";
 import { useGetRandomMovieQuery } from "../../store/modules/fetch";
 import * as S from "./HomeIntro.style";
@@ -27,10 +28,11 @@ const HomeIntro = ({ ran }) => {
   return (
     <>
       <Layout>
-        <Header />
+        <Header color="white" />
         <S.Main>
           <IntroMovies />
         </S.Main>
+        <Footer />
         <S.Background style={{ backgroundImage: `url(${backdropUrl})` }} />
       </Layout>
     </>

@@ -15,10 +15,26 @@ const headerStyle = css`
 `;
 
 const Header = styled.header`
-  background-color: ${({ bgColor }) => bgColor};
   width: 100%;
   ${headerStyle};
-  border: 3px solid red;
+  /* border: 3px solid red; */
+
+  // color 프롭이 없이면 디폴트 화이트
+  color: ${(p) => p.color || "black"};
+  ${(p) =>
+    p.color &&
+    css`
+      color: white;
+    `}
+
+  // background 프롭이 없으면 디폴트 null
+  background: ${(p) => p.background || "null"};
+
+  ${(p) =>
+    p.background &&
+    css`
+      color: white;
+    `}
 `;
 
 const Container = styled.div`
@@ -27,8 +43,12 @@ const Container = styled.div`
   display: flex;
   justify-content: ${({ isOpen }) => (isOpen ? "flex-end" : "space-between")};
   align-items: center;
-  color: ${({ color }) => color};
-  border: 3px solid green;
+  color: ${({ color, bgColor }) =>
+    bgColor === "white" &&
+    css`
+      color: black;
+    `};
+  /* border: 3px solid green; */
   @media ${device.Laptops} {
     width: ${headerWidthLaptop};
   }
@@ -60,7 +80,7 @@ const MenuContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 3px solid yellow;
+  /* border: 3px solid yellow; */
 `;
 
 const SearchIcon = styled(IoIosSearch)`

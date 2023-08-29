@@ -21,6 +21,7 @@ const ImageContainer = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+  background-color: black;
 `;
 
 const Image = styled.img`
@@ -28,6 +29,7 @@ const Image = styled.img`
   height: 100%;
   object-fit: cover;
   border-radius: 8px;
+  opacity: 0.8;
 `;
 
 const Content = styled.div`
@@ -42,7 +44,8 @@ const Content = styled.div`
 const Title = styled.h3`
   margin: 0;
   color: white;
-  font-size: 16px;
+  font-size: 1.5rem;
+  font-weight: 700;
   text-align: center;
 `;
 
